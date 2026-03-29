@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Sudoku"
+msgstr "Sudoku"
+
+msgid "Select difficulty"
+msgstr "Choisir la difficulté"
+
+msgid "Easy"
+msgstr "Facile"
+
+msgid "Medium"
+msgstr "Moyen"
+
+msgid "Hard"
+msgstr "Difficile"
+
+msgid "← Menu"
+msgstr "← Menu"
+
+msgid "Pencil: OFF"
+msgstr "Crayon : OFF"
+
+msgid "You solved it!"
+msgstr "Vous avez résolu !"
+
+msgid "Congratulations"
+msgstr "Félicitations"
+
+msgid "Play Again"
+msgstr "Rejouer"
+
+msgid "PENCIL_ON"
+msgstr "Crayon : ON"
+
+msgid "PENCIL_OFF"
+msgstr "Crayon : OFF"
+
+msgid "MISTAKES_COUNT"
+msgid_plural "MISTAKES_COUNT"
+msgstr[0] "Erreur : %d"
+msgstr[1] "Erreurs : %d"
+
+msgid "DIFFICULTY_EASY"
+msgstr "Facile"
+
+msgid "DIFFICULTY_MEDIUM"
+msgstr "Moyen"
+
+msgid "DIFFICULTY_HARD"
+msgstr "Difficile"

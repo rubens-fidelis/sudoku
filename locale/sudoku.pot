@@ -1,0 +1,72 @@
+# Sudoku Game — Translation Template
+# Copyright (C) 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sudoku-godot\n"
+"POT-Creation-Date: 2026-03-29\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+# --- main_menu.tscn (AutoTranslate) ---
+msgid "Sudoku"
+msgstr ""
+
+msgid "Select difficulty"
+msgstr ""
+
+msgid "Easy"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Hard"
+msgstr ""
+
+# --- game.tscn (AutoTranslate) ---
+msgid "← Menu"
+msgstr ""
+
+msgid "Pencil: OFF"
+msgstr ""
+
+# --- win_screen.tscn (AutoTranslate) ---
+msgid "You solved it!"
+msgstr ""
+
+msgid "Congratulations"
+msgstr ""
+
+msgid "Play Again"
+msgstr ""
+
+# --- game.gd: pencil toggle (dynamic, requires explicit tr()) ---
+msgid "PENCIL_ON"
+msgstr ""
+
+msgid "PENCIL_OFF"
+msgstr ""
+
+# --- game.gd: mistake counter (plural-aware, requires tr_n()) ---
+msgid "MISTAKES_COUNT"
+msgid_plural "MISTAKES_COUNT"
+msgstr[0] ""
+msgstr[1] ""
+
+# --- game.gd: difficulty display (dynamic, replaces .capitalize()) ---
+msgid "DIFFICULTY_EASY"
+msgstr ""
+
+msgid "DIFFICULTY_MEDIUM"
+msgstr ""
+
+msgid "DIFFICULTY_HARD"
+msgstr ""
