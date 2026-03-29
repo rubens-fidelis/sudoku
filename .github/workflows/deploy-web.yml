@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow one concurrent deployment; don't cancel in-progress deploys
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+# Required by the GitHub Pages deploy action
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Godot 4.6
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.6.0
+          use-dotnet: false
+          include-templates: true
+
+      - name: Export web build
+        run: |
+          mkdir -p export/web
+          godot --headless --export-release "Web" "$PWD/export/web/index.html"
+
+      # GitHub Pages does not send the COOP/COEP headers that Godot needs for
+      # audio threading. This service worker injects them client-side instead.
+      - name: Patch for SharedArrayBuffer (GitHub Pages workaround)
+        run: |
+          curl -sL https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.min.js \
+            -o export/web/coi-serviceworker.js
+          sed -i 's|</head>|<script src="coi-serviceworker.js"></script></head>|' export/web/index.html
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: export/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
