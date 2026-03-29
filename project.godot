@@ -34,9 +34,13 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 [internationalization]
 
 locale/translations=PackedStringArray("res://locale/en.po", "res://locale/pt_BR.po", "res://locale/es.po", "res://locale/fr.po", "res://locale/de.po")
-locale/fallback="en"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
