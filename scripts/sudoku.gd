@@ -58,8 +58,33 @@ func _remove_cells(board: Array, count: int) -> void:
 	for pos in positions:
 		if removed >= count:
 			break
+		var backup: int = board[pos]
 		board[pos] = 0
-		removed += 1
+		if _has_unique_solution(board):
+			removed += 1
+		else:
+			board[pos] = backup
+
+func _has_unique_solution(board: Array) -> bool:
+	var copy := board.duplicate()
+	var count := [0]
+	_count_solutions(copy, count)
+	return count[0] == 1
+
+func _count_solutions(board: Array, count: Array) -> void:
+	if count[0] >= 2:
+		return
+	for pos in range(81):
+		if board[pos] == 0:
+			for num in range(1, 10):
+				if is_valid(board, pos, num):
+					board[pos] = num
+					_count_solutions(board, count)
+					board[pos] = 0
+					if count[0] >= 2:
+						return
+			return
+	count[0] += 1
 
 func is_complete(board: Array, solution: Array) -> bool:
 	return board == solution

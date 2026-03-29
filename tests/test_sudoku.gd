@@ -75,3 +75,21 @@ func test_clues_match_board():
 			assert_ne(result["board"][i], 0)
 		else:
 			assert_eq(result["board"][i], 0)
+
+func test_generate_easy_has_unique_solution():
+	var result = sudoku.generate("easy")
+	var count := [0]
+	sudoku._count_solutions(result["board"].duplicate(), count)
+	assert_eq(count[0], 1)
+
+func test_generate_medium_has_unique_solution():
+	var result = sudoku.generate("medium")
+	var count := [0]
+	sudoku._count_solutions(result["board"].duplicate(), count)
+	assert_eq(count[0], 1)
+
+func test_generate_hard_has_unique_solution():
+	var result = sudoku.generate("hard")
+	var count := [0]
+	sudoku._count_solutions(result["board"].duplicate(), count)
+	assert_eq(count[0], 1)
