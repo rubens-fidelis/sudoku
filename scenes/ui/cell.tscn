@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://vk8i6ypkag8j"]
+
+[ext_resource type="Script" uid="uid://cnyn6f3ld1nv3" path="res://scripts/cell.gd" id="1_3ck7d"]
+
+[node name="Cell" type="Panel" unique_id=584204023]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3ck7d")
+
+[node name="BigNumber" type="Label" parent="." unique_id=1842676696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PencilGrid" type="GridContainer" parent="." unique_id=100394118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Mark1" type="Label" parent="PencilGrid" unique_id=512734811]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark2" type="Label" parent="PencilGrid" unique_id=33804151]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark3" type="Label" parent="PencilGrid" unique_id=1100575175]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark4" type="Label" parent="PencilGrid" unique_id=1342983187]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark5" type="Label" parent="PencilGrid" unique_id=533050931]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark6" type="Label" parent="PencilGrid" unique_id=1632455566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark7" type="Label" parent="PencilGrid" unique_id=1881016360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark8" type="Label" parent="PencilGrid" unique_id=1634617821]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mark9" type="Label" parent="PencilGrid" unique_id=209629568]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+vertical_alignment = 1

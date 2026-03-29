@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://y6eaux4rukk5"]
+
+[ext_resource type="PackedScene" uid="uid://dkuelnleboe1k" path="res://scenes/ui/number_picker.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d253fddr4jmdq" path="res://scripts/game.gd" id="1_yqjtg"]
+
+[node name="Game" type="VBoxContainer" unique_id=25104460]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqjtg")
+
+[node name="Toolbar" type="HBoxContainer" parent="." unique_id=816463201]
+layout_mode = 2
+
+[node name="MenuBtn" type="Button" parent="Toolbar" unique_id=29819906]
+layout_mode = 2
+text = "← Menu"
+
+[node name="DifficultyLabel" type="Label" parent="Toolbar" unique_id=1087139176]
+layout_mode = 2
+text = "Easy"
+
+[node name="PencilToggle" type="Button" parent="Toolbar" unique_id=2106310147]
+layout_mode = 2
+toggle_mode = true
+text = "Pencil: OFF"
+
+[node name="Board" type="GridContainer" parent="." unique_id=758115868]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 9
+
+[node name="NumberPicker" parent="." unique_id=281002325 instance=ExtResource("1_uwrxv")]
+layout_mode = 2

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dkuelnleboe1k"]
+
+[ext_resource type="Script" uid="uid://bj0v38we1ecac" path="res://scripts/number_picker.gd" id="1_oeuiv"]
+
+[node name="NumberPicker" type="HBoxContainer" unique_id=281002325]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_oeuiv")
+
+[node name="Num1" type="Button" parent="." unique_id=25176541]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "1"
+
+[node name="Num2" type="Button" parent="." unique_id=341156993]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "2"
+
+[node name="Num3" type="Button" parent="." unique_id=813147908]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "3"
+
+[node name="Num4" type="Button" parent="." unique_id=914214886]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "4"
+
+[node name="Num5" type="Button" parent="." unique_id=850186557]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "5"
+
+[node name="Num6" type="Button" parent="." unique_id=427024899]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "6"
+
+[node name="Num7" type="Button" parent="." unique_id=1653839210]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "7"
+
+[node name="Num8" type="Button" parent="." unique_id=200980945]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "8"
+
+[node name="Num9" type="Button" parent="." unique_id=1138963594]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "9"
+
+[node name="Clear" type="Button" parent="." unique_id=1055265053]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate_mode = 2
+text = "x"

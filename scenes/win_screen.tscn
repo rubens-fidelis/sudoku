@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djonjb3eeww3f"]
+
+[ext_resource type="Script" uid="uid://c2a6mxok0abm" path="res://scripts/win_screen.gd" id="1_wv5lq"]
+
+[node name="WinScreen" type="VBoxContainer" unique_id=68353514]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wv5lq")
+
+[node name="Title" type="Label" parent="." unique_id=296228289]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "You solved it!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=2089565649]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Congratulations"
+horizontal_alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="." unique_id=1060896509]
+layout_mode = 2
+text = "Play Again"

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bnulrfn2nyxx8"]
+
+[ext_resource type="Script" uid="uid://b2bbmbe6w3rnp" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="VBoxContainer" unique_id=597518860]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Title" type="Label" parent="." unique_id=2143500182]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Sudoku"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=1157898506]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Select difficulty"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=649387798]
+layout_mode = 2
+
+[node name="EasyBtn" type="Button" parent="Buttons" unique_id=245878380]
+layout_mode = 2
+text = "Easy"
+
+[node name="MediumBtn" type="Button" parent="Buttons" unique_id=1434466413]
+layout_mode = 2
+text = "Medium"
+
+[node name="HardBtn" type="Button" parent="Buttons" unique_id=1026062131]
+layout_mode = 2
+text = "Hard"
+
+[node name="LocaleSelector" type="OptionButton" parent="." unique_id=832901234]
+layout_mode = 2
+auto_translate_mode = 2

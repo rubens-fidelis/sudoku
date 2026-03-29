@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Sudoku"
+run/main_scene="uid://bnulrfn2nyxx8"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,15 +24,17 @@ GameState="*uid://cihtgj6ubtj4u"
 window/size/viewport_width=720
 window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
-[physics]
+[internationalization]
 
-3d/physics_engine="Jolt Physics"
+locale/translations=PackedStringArray("res://locale/en.po", "res://locale/pt_BR.po", "res://locale/es.po", "res://locale/fr.po", "res://locale/de.po")
+locale/fallback="en"
 
 [rendering]
 
