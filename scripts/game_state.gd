@@ -35,7 +35,6 @@ func save_settings() -> void:
 	cfg.set_value("settings", "locale", locale)
 	cfg.save("user://settings.cfg")
 
-signal board_changed(pos: int)
 signal game_won
 signal errors_changed
 
@@ -59,7 +58,6 @@ func set_number(pos: int, num: int) -> void:
 	board[pos] = num
 	if num != 0:
 		pencil_marks[pos] = 0
-	board_changed.emit(pos)
 	if is_complete():
 		clear_saved_game()
 		game_won.emit()
@@ -70,7 +68,6 @@ func toggle_pencil(pos: int, num: int) -> void:
 	if clues[pos] or board[pos] != 0:
 		return
 	pencil_marks[pos] ^= (1 << (num - 1))
-	board_changed.emit(pos)
 	_request_save()
 
 func is_complete() -> bool:

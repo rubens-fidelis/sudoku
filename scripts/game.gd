@@ -12,7 +12,7 @@ var _box_complete: Array = []
 @onready var board: GridContainer = $Board
 @onready var pencil_toggle: Button = $Toolbar/PencilToggle
 @onready var difficulty_label: Label = $Toolbar/DifficultyLabel
-@onready var number_picker = $NumberPicker
+@onready var number_picker: HBoxContainer = $NumberPicker
 
 const CellScene = preload("res://scenes/ui/cell.tscn")
 const PADDING: float = 20.0
@@ -315,7 +315,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_refresh_picker()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and selected_pos >= 0:
+	if event is InputEventKey and event.pressed and not event.echo and selected_pos >= 0:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
 			var num = key - KEY_0

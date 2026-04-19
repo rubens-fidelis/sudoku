@@ -1,9 +1,6 @@
 extends Node
 
-var _peers: Array  # _peers[pos] = PackedInt32Array of peer positions
-
-func _init() -> void:
-	_peers = _build_peers()
+static var _peers: Array = _build_peers()
 
 static func _build_peers() -> Array:
 	var result: Array = []
