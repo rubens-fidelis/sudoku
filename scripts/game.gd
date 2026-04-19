@@ -128,7 +128,13 @@ func _box_color(pos: int) -> Color:
 	return BOX_COLOR_A if (box_row + box_col) % 2 == 0 else BOX_COLOR_B
 
 func _resize_cells() -> void:
-	var side: float = floor(size.x / 9.0)
+	var viewport_size := get_viewport().get_visible_rect().size
+	var sep_count: int = max(get_child_count() - 1, 0)
+	var non_board: float = PADDING * 2.0 + get_theme_constant("separation") * sep_count
+	for child in get_children():
+		if child != board:
+			non_board += child.get_combined_minimum_size().y
+	var side: float = floor(minf(viewport_size.x - PADDING * 2.0, viewport_size.y - non_board) / 9.0)
 	for cell in cells:
 		cell.custom_minimum_size = Vector2(side, side)
 
