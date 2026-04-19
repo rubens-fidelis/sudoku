@@ -31,6 +31,10 @@ msgstr ""
 msgid "Hard"
 msgstr ""
 
+# --- main_menu.gd: continue button (dynamic, requires explicit tr()) ---
+msgid "CONTINUE"
+msgstr ""
+
 # --- game.tscn (AutoTranslate) ---
 msgid "< Menu"
 msgstr ""

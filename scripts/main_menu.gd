@@ -14,6 +14,7 @@ func _ready() -> void:
 
 	_style_title()
 	_style_buttons()
+	_setup_continue_button()
 	_setup_locale_selector()
 
 	# Two expanding spacers keep the title+buttons group vertically centered
@@ -166,6 +167,48 @@ func _on_locale_selected(idx: int) -> void:
 	GameState.locale = LOCALES[idx]
 	TranslationServer.set_locale(LOCALES[idx])
 	GameState.save_settings()
+
+func _setup_continue_button() -> void:
+	if not GameState.has_saved_game():
+		return
+	var continue_btn := Button.new()
+	var cfg := ConfigFile.new()
+	if cfg.load("user://save_game.cfg") == OK:
+		var saved_diff: String = cfg.get_value("game", "difficulty", "")
+		continue_btn.text = tr("CONTINUE") + " (" + tr("DIFFICULTY_" + saved_diff.to_upper()) + ")"
+	continue_btn.custom_minimum_size = Vector2(260, 58)
+	continue_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+
+	var normal := StyleBoxFlat.new()
+	normal.bg_color = Color(0.18, 0.38, 0.82)
+	normal.set_corner_radius_all(10)
+	normal.content_margin_left = 32
+	normal.content_margin_right = 32
+	normal.content_margin_top = 14
+	normal.content_margin_bottom = 14
+
+	var hover := normal.duplicate() as StyleBoxFlat
+	hover.bg_color = Color(0.25, 0.47, 0.92)
+
+	var pressed_style := normal.duplicate() as StyleBoxFlat
+	pressed_style.bg_color = Color(0.12, 0.28, 0.65)
+
+	continue_btn.add_theme_stylebox_override("normal", normal)
+	continue_btn.add_theme_stylebox_override("hover", hover)
+	continue_btn.add_theme_stylebox_override("pressed", pressed_style)
+	continue_btn.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	continue_btn.add_theme_font_size_override("font_size", 22)
+	continue_btn.add_theme_color_override("font_color", Color.WHITE)
+	continue_btn.add_theme_color_override("font_hover_color", Color.WHITE)
+	continue_btn.add_theme_color_override("font_pressed_color", Color.WHITE)
+
+	add_child(continue_btn)
+	move_child(continue_btn, $Buttons.get_index())
+	continue_btn.pressed.connect(_on_continue)
+
+func _on_continue() -> void:
+	GameState.load_game()
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_difficulty(difficulty: String) -> void:
 	GameState.difficulty = difficulty

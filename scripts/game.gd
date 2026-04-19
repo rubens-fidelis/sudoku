@@ -147,12 +147,13 @@ func _notification(what: int) -> void:
 		_resize_cells()
 
 func _generate_puzzle() -> void:
-	var sudoku = load("res://scripts/sudoku.gd").new()
-	var puzzle = sudoku.generate(GameState.difficulty)
-	GameState.setup(puzzle)
+	if not GameState.is_continuing:
+		var sudoku = load("res://scripts/sudoku.gd").new()
+		var puzzle = sudoku.generate(GameState.difficulty)
+		GameState.setup(puzzle)
 	difficulty_label.text = tr("DIFFICULTY_" + GameState.difficulty.to_upper())
 	if error_label:
-		error_label.text = tr_n("MISTAKES_COUNT", "MISTAKES_COUNT", 0) % 0
+		error_label.text = tr_n("MISTAKES_COUNT", "MISTAKES_COUNT", GameState.error_count) % GameState.error_count
 	_refresh_all_cells()
 
 func _connect_signals() -> void:

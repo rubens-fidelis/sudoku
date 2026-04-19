@@ -24,6 +24,9 @@ msgstr "Difícil"
 msgid "< Menu"
 msgstr "< Menú"
 
+msgid "CONTINUE"
+msgstr "Continuar"
+
 msgid "Pencil: OFF"
 msgstr "Lápiz: OFF"
 

@@ -24,6 +24,9 @@ msgstr "Schwer"
 msgid "< Menu"
 msgstr "< Menü"
 
+msgid "CONTINUE"
+msgstr "Fortsetzen"
+
 msgid "Pencil: OFF"
 msgstr "Stift: AUS"
 
