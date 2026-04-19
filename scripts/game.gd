@@ -137,14 +137,10 @@ func _resize_cells() -> void:
 	var side: float = floor(minf(viewport_size.x - PADDING * 2.0, viewport_size.y - non_board) / 9.0)
 	for cell in cells:
 		cell.custom_minimum_size = Vector2(side, side)
-	var content_width: float = side * 9.0 + PADDING * 2.0
-	if viewport_size.x > content_width:
-		var margin: float = (viewport_size.x - content_width) / 2.0
-		offset_left = margin
-		offset_right = -margin
-	else:
-		offset_left = PADDING
-		offset_right = -PADDING
+	var board_width: float = side * 9.0
+	var excess: float = viewport_size.x - board_width
+	offset_left = floor(excess / 2.0)
+	offset_right = -(excess - floor(excess / 2.0))
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_SIZE_CHANGED and cells.size() > 0:
