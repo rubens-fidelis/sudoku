@@ -52,7 +52,7 @@ func refresh(sel_num: int, counts: Array) -> void:
 	for i in range(1, 10):
 		var btn: Button = get_node("Num%d" % i)
 		btn.add_theme_stylebox_override("normal",
-				_selected_style.duplicate() if i == sel_num else _normal_style.duplicate())
+				_selected_style if i == sel_num else _normal_style)
 		if counts[i] > 9:
 			btn.add_theme_color_override("font_color", Color(0.82, 0.15, 0.15))
 			btn.add_theme_color_override("font_hover_color", Color(0.82, 0.15, 0.15))

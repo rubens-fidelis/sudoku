@@ -5,6 +5,9 @@ var selected_pos: int = -1
 var selected_num: int = 0
 var pencil_mode: bool = false
 var error_label: Label
+var _row_complete: Array = []
+var _col_complete: Array = []
+var _box_complete: Array = []
 
 @onready var board: GridContainer = $Board
 @onready var pencil_toggle: Button = $Toolbar/PencilToggle
@@ -151,13 +154,13 @@ func _generate_puzzle() -> void:
 		var sudoku = load("res://scripts/sudoku.gd").new()
 		var puzzle = sudoku.generate(GameState.difficulty)
 		GameState.setup(puzzle)
+		sudoku.queue_free()
 	difficulty_label.text = tr("DIFFICULTY_" + GameState.difficulty.to_upper())
 	if error_label:
 		error_label.text = tr_n("MISTAKES_COUNT", "MISTAKES_COUNT", GameState.error_count) % GameState.error_count
 	_refresh_all_cells()
 
 func _connect_signals() -> void:
-	GameState.board_changed.connect(_on_board_changed)
 	GameState.game_won.connect(_on_game_won)
 	GameState.errors_changed.connect(_on_errors_changed)
 	number_picker.number_pressed.connect(_on_number_pressed)
@@ -166,7 +169,6 @@ func _connect_signals() -> void:
 	$Toolbar/MenuBtn.pressed.connect(_on_menu_pressed)
 
 func _exit_tree() -> void:
-	GameState.board_changed.disconnect(_on_board_changed)
 	GameState.game_won.disconnect(_on_game_won)
 	GameState.errors_changed.disconnect(_on_errors_changed)
 
@@ -179,10 +181,23 @@ func _refresh_picker() -> void:
 	number_picker.refresh(selected_num, counts)
 
 func _refresh_all_cells() -> void:
+	_compute_completions()
 	for i in range(81):
 		cells[i].setup(i, GameState.clues[i])
 		_refresh_cell(i)
 	_refresh_picker()
+
+func _compute_completions() -> void:
+	_row_complete.clear()
+	_col_complete.clear()
+	_box_complete.clear()
+	for r in range(9):
+		_row_complete.append(_is_row_complete(r))
+	for c in range(9):
+		_col_complete.append(_is_col_complete(c))
+	for br in range(3):
+		for bc in range(3):
+			_box_complete.append(_is_box_complete(br, bc))
 
 func _is_in_context(pos: int) -> bool:
 	if selected_pos < 0:
@@ -227,8 +242,8 @@ func _refresh_cell(pos: int) -> void:
 			and number != GameState.solution[pos]
 	var row: int = pos / 9
 	var col: int = pos % 9
-	var completed = not wrong and (_is_row_complete(row) or _is_col_complete(col) \
-			or _is_box_complete(row / 3, col / 3))
+	var completed = not wrong and (_row_complete[row] or _col_complete[col] \
+			or _box_complete[row / 3 * 3 + col / 3])
 	cells[pos].refresh(number, marks, selected, highlighted, num_highlighted, wrong, completed)
 
 func _apply_number(num: int) -> void:
@@ -250,8 +265,10 @@ func _on_cell_selected(pos: int) -> void:
 		selected_pos = pos
 		if selected_num > 0:
 			_apply_number(selected_num)
+	_compute_completions()
 	for i in range(81):
 		_refresh_cell(i)
+	_refresh_picker()
 
 func _on_number_pressed(num: int) -> void:
 	if selected_num == num:
@@ -260,6 +277,7 @@ func _on_number_pressed(num: int) -> void:
 		selected_num = num
 		if selected_pos >= 0:
 			_apply_number(num)
+	_compute_completions()
 	for i in range(81):
 		_refresh_cell(i)
 	_refresh_picker()
@@ -268,12 +286,9 @@ func _on_clear_pressed() -> void:
 	if selected_pos >= 0:
 		GameState.set_number(selected_pos, 0)
 	selected_num = 0
+	_compute_completions()
 	for i in range(81):
 		_refresh_cell(i)
-	_refresh_picker()
-
-func _on_board_changed(pos: int) -> void:
-	_refresh_cell(pos)
 	_refresh_picker()
 
 func _on_errors_changed() -> void:
@@ -294,6 +309,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			and event.button_index == MOUSE_BUTTON_LEFT:
 		selected_pos = -1
 		selected_num = 0
+		_compute_completions()
 		for i in range(81):
 			_refresh_cell(i)
 		_refresh_picker()
@@ -305,12 +321,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			var num = key - KEY_0
 			selected_num = num
 			_apply_number(num)
+			_compute_completions()
 			for i in range(81):
 				_refresh_cell(i)
 			_refresh_picker()
 		elif key == KEY_0 or key == KEY_BACKSPACE or key == KEY_DELETE:
 			GameState.set_number(selected_pos, 0)
 			selected_num = 0
+			_compute_completions()
 			for i in range(81):
 				_refresh_cell(i)
 			_refresh_picker()

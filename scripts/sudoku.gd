@@ -29,14 +29,14 @@ static func _build_peers() -> Array:
 	return result
 
 func _get_candidates(board: Array, pos: int) -> Array:
-	var used := {}
+	var used := [false, false, false, false, false, false, false, false, false, false]
 	for peer in _peers[pos]:
 		var val: int = board[peer]
 		if val != 0:
 			used[val] = true
 	var candidates: Array = []
 	for num in range(1, 10):
-		if not used.has(num):
+		if not used[num]:
 			candidates.append(num)
 	return candidates
 

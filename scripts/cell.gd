@@ -48,7 +48,7 @@ func setup(cell_pos: int, clue: bool) -> void:
 	pos = cell_pos
 	is_clue = clue
 
-func refresh(number: int, marks: Array, selected: bool, highlighted: bool, num_highlighted: bool, wrong: bool, completed: bool) -> void:
+func refresh(number: int, marks: int, selected: bool, highlighted: bool, num_highlighted: bool, wrong: bool, completed: bool) -> void:
 	_update_background(selected, highlighted, num_highlighted)
 	if number != 0:
 		_show_number(number, wrong, completed)
@@ -68,12 +68,12 @@ func _show_number(number: int, wrong: bool, completed: bool) -> void:
 		var color = Color(0.62, 0.72, 0.88) if completed else Color(0.18, 0.38, 0.82)
 		big_number.add_theme_color_override("font_color", color)
 
-func _show_pencil_marks(marks: Array) -> void:
+func _show_pencil_marks(marks: int) -> void:
 	big_number.visible = false
-	pencil_grid.visible = marks.size() > 0
+	pencil_grid.visible = marks != 0
 	for i in range(9):
 		var label: Label = pencil_grid.get_child(i)
-		label.text = str(i + 1) if (i + 1) in marks else ""
+		label.text = str(i + 1) if (marks & (1 << i)) != 0 else ""
 		label.add_theme_color_override("font_color", Color(0.35, 0.35, 0.45))
 
 func _update_background(selected: bool, highlighted: bool, num_highlighted: bool) -> void:
