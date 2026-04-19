@@ -238,6 +238,7 @@ func _apply_number(num: int) -> void:
 		return
 	if GameState.board[selected_pos] == GameState.solution[selected_pos]:
 		selected_num = num
+		selected_pos = -1
 		return
 	GameState.set_number(selected_pos, num)
 
