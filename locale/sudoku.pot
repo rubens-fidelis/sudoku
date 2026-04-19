@@ -32,7 +32,7 @@ msgid "Hard"
 msgstr ""
 
 # --- game.tscn (AutoTranslate) ---
-msgid "← Menu"
+msgid "< Menu"
 msgstr ""
 
 msgid "Pencil: OFF"

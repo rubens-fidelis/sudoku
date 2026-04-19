@@ -16,7 +16,7 @@ layout_mode = 2
 
 [node name="MenuBtn" type="Button" parent="Toolbar" unique_id=29819906]
 layout_mode = 2
-text = "← Menu"
+text = "< Menu"
 
 [node name="DifficultyLabel" type="Label" parent="Toolbar" unique_id=1087139176]
 layout_mode = 2

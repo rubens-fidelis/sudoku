@@ -21,8 +21,8 @@ msgstr "Moyen"
 msgid "Hard"
 msgstr "Difficile"
 
-msgid "← Menu"
-msgstr "← Menu"
+msgid "< Menu"
+msgstr "< Menu"
 
 msgid "Pencil: OFF"
 msgstr "Crayon : OFF"
