@@ -225,8 +225,11 @@ func _apply_number(num: int) -> void:
 		return
 	if pencil_mode:
 		GameState.toggle_pencil(selected_pos, num)
-	else:
-		GameState.set_number(selected_pos, num)
+		return
+	if GameState.board[selected_pos] == GameState.solution[selected_pos]:
+		selected_num = num
+		return
+	GameState.set_number(selected_pos, num)
 
 func _on_cell_selected(pos: int) -> void:
 	if pos == selected_pos:
